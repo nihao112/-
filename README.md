@@ -22,16 +22,6 @@
 
 [English document](https://github.com/lin-xin/manage-system/blob/master/README_EN.md)
 
-## 项目截图
-
-### 登录
-
-![Image text](https://github.com/lin-xin/manage-system/raw/master/screenshots/wms3.png)
-
-### 首页
-
-![Image text](https://github.com/lin-xin/manage-system/raw/master/screenshots/wms1.png)
-## 前言
 
 该方案作为一套多功能的后台框架模板，适用于绝大部分的后台管理系统（Web Management System）开发。基于 Vue3，使用 vue-cli3 脚手架，引用 Element Plus 组件库，方便开发快速简洁好看的组件。分离颜色样式，支持手动切换主题色，而且很方便使用自定义主题色。
 
