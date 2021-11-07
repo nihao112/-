@@ -31,6 +31,7 @@
         </div>
         <p class="login-tips">Tips : 用户名和密码随便填。</p>
       </el-form>
+
     </div>
   </div>
 </template>
@@ -40,15 +41,14 @@ import { ref, reactive } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 import { ElMessage } from "element-plus";
-
+import { Axiostu } from "../api/index"
 export default {
   setup () {
     const router = useRouter();
     const param = reactive({
       username: "倪浩(⊙o⊙)",
-      password: "",
+      password: "123456",
     });
-
     const rules = {
       username: [
         {
@@ -63,11 +63,21 @@ export default {
     };
     const login = ref(null);
     const submitForm = () => {
+
       login.value.validate((valid) => {
         if (valid) {
-          ElMessage.success("登录成功");
-          localStorage.setItem("ms_username", param.username);
-          router.push("/");
+          Axiostu().then((data) => {
+            console.log(data);
+            data.data.forEach((item) => {
+              if (item.password == param.password) {
+                ElMessage.success("登录成功");
+                localStorage.setItem("ms_username", param.username);
+                router.push("/");
+              } else {
+                ElMessage.error("密码错误");
+              }
+            })
+          })
         } else {
           ElMessage.error("登录成功");
           return false;
