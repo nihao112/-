@@ -109,7 +109,24 @@ const routes = [
                     title: '富文本编辑器'
                 },
                 component: () => import (/* webpackChunkName: "editor" */ '../views/Editor.vue')
-            }
+            }, {
+                  path: "/music",
+                  name: "Music",
+                  meta: {
+                      title: 'music'
+                  },
+                  component: () => import ( /* webpackChunkName: "login" */ "../views/Music.vue"),
+                  childred:[
+                          {
+                            path: 'tuijian',
+                            name: 'tuijian',
+                            meta: {
+                                title: '推荐'
+                            },
+                            component: () => import (/* webpackChunkName: "editor" */ '../views/Music1.vue')
+                        }
+                  ]
+              }
         ]
     }, {
         path: "/login",

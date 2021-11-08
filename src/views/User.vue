@@ -9,8 +9,7 @@
             </div>
           </template>
           <div class="info">
-            <div class="info-image"
-                 @click="showDialog">
+            <div class="info-image" @click="showDialog">
               <img :src="avatarImg" />
               <span class="info-edit">
                 <i class="el-icon-lx-camerafill"></i>
@@ -31,46 +30,31 @@
           <el-form label-width="90px">
             <el-form-item label="用户名："> {{ name }} </el-form-item>
             <el-form-item label="旧密码：">
-              <el-input type="password"
-                        v-model="form.old"></el-input>
+              <el-input type="password" v-model="form.old"></el-input>
             </el-form-item>
             <el-form-item label="新密码：">
-              <el-input type="password"
-                        v-model="form.new"></el-input>
+              <el-input type="password" v-model="form.new"></el-input>
             </el-form-item>
             <el-form-item label="个人简介：">
               <el-input v-model="form.desc"></el-input>
             </el-form-item>
             <el-form-item>
-              <el-button type="primary"
-                         @click="onSubmit">保存</el-button>
+              <el-button type="primary" @click="onSubmit">保存</el-button>
             </el-form-item>
           </el-form>
         </el-card>
       </el-col>
     </el-row>
-    <el-dialog title="裁剪图片"
-               v-model="dialogVisible"
-               width="600px">
-      <vue-cropper ref="cropper"
-                   :src="imgSrc"
-                   :ready="cropImage"
-                   :zoom="cropImage"
-                   :cropmove="cropImage"
-                   style="width: 100%; height: 400px"></vue-cropper>
+    <el-dialog title="裁剪图片" v-model="dialogVisible" width="600px">
+      <vue-cropper ref="cropper" :src="imgSrc" :ready="cropImage" :zoom="cropImage" :cropmove="cropImage"
+        style="width: 100%; height: 400px"></vue-cropper>
 
       <template #footer>
         <span class="dialog-footer">
-          <el-button class="crop-demo-btn"
-                     type="primary">选择图片
-            <input class="crop-input"
-                   type="file"
-                   name="image"
-                   accept="image/*"
-                   @change="setImage" />
+          <el-button class="crop-demo-btn" type="primary">选择图片
+            <input class="crop-input" type="file" name="image" accept="image/*" @change="setImage" />
           </el-button>
-          <el-button type="primary"
-                     @click="saveAvatar">上传并保存</el-button>
+          <el-button type="primary" @click="saveAvatar">上传并保存</el-button>
         </span>
       </template>
     </el-dialog>
