@@ -1,55 +1,48 @@
 <template>
   <div class="error-page">
-
-    <!-- <div style='display:flex'>
-      <div class='pink'>
-        <div style='margin-left:40px;margin-top:10px'><img src="6.png" alt="" style='width:100px'></div>
-
-      </div>
-
-      <div style='width:800px'>
-        <el-carousel :interval="4000" type="card" height="200px">
-          <el-carousel-item v-for="item in arr" :key="item">
-            <img :src="item" alt="" style='width:100%;height:100%' />
-          </el-carousel-item>
-        </el-carousel>
-      </div>
-
-    </div> -->
     <div style='margin-left:40px;margin-top:10px'><img src="6.png" alt="" style='width:100px'></div>
     <el-menu class="sidebar-el-menu" :default-active="onRoutes" :collapse="collapse" background-color="#f6f6f6"
       text-color="#bfcbd9" active-text-color="#20a0ff" unique-opened router>
-      <div style='margin-left:40px;margin-top:10px'><img src="6.png" alt="" style='width:100px'></div>
-      <el-menu class="sidebar-el-menu" :default-active="onRoutes" :collapse="collapse" background-color="#f6f6f6"
-        text-color="#bfcbd9" active-text-color="#20a0ff" unique-opened router>
-        <template v-for="item in items">
-          <template v-if="item.subs">
-            <el-submenu :index="item.index" :key="item.index">
-              <template #title>
-                <i :class="item.icon"></i>
-                <span>{{ item.title }}</span>
-              </template>
-              <template v-for="subItem in item.subs">
-                <el-submenu v-if="subItem.subs" :index="subItem.index" :key="subItem.index">
-                  <template #title>{{ subItem.title }}</template>
-                  <el-menu-item v-for="(threeItem, i) in subItem.subs" :key="i" :index="threeItem.index">
-                    {{ threeItem.title }}</el-menu-item>
-                </el-submenu>
-                <el-menu-item v-else :index="subItem.index" :key="subItem.index">{{ subItem.title }}
-                </el-menu-item>
-              </template>
-            </el-submenu>
+      <template v-for="item in items">
+        <template v-if="item.subs">
 
-          </template>
-          <template v-else>
-            <el-menu-item :index="item.index" :key="item.index">
+          <el-submenu :index="item.index" :key="item.index">
+
+            <template #title>
               <i :class="item.icon"></i>
-              <template #title>{{ item.title }}</template>
-            </el-menu-item>
-          </template>
+              <span>{{ item.title }}</span>
+
+            </template>
+
+            <template v-for="subItem in item.subs">
+              <el-submenu v-if="subItem.subs" :index="subItem.index" :key="subItem.index">
+
+                <template #title>{{ subItem.title }}</template>
+                <el-menu-item style="border: 1px solid red" v-for="(threeItem, i) in subItem.subs" :key="i"
+                  :index="threeItem.index">
+                  {{ threeItem.title }}</el-menu-item>
+              </el-submenu>
+              <el-menu-item v-else :index="subItem.index" :key="subItem.index">{{ subItem.title }}
+
+              </el-menu-item>
+
+            </template>
+
+          </el-submenu>
+
         </template>
-      </el-menu>
+        <template v-else>
+          <el-menu-item :index="item.index" :key="item.index">
+            <i :class="item.icon"></i>
+            <template #title>{{ item.title }}</template>
+          </el-menu-item>
+        </template>
+      </template>
+    </el-menu>
+    <div class='red'>
       <router-view></router-view>
+    </div>
+
   </div>
 </template>
 
@@ -60,7 +53,6 @@ import { useRoute } from "vue-router";
 export default {
   name: "Music",
   setup () {
-
     const items = [
       {
         icon: "el-icon-lx-favor",
@@ -130,7 +122,7 @@ export default {
       items,
       onRoutes,
       collapse,
-      arr
+
     }
 
   },
@@ -155,11 +147,7 @@ export default {
 .el-carousel__item:nth-child(2n + 1) {
   background-color: #d3dce6;
 }
-.pink {
-  width: 200px;
-  height: 630px;
-  background: #f6f6f6;
-}
+
 .sidebar {
   display: block;
   position: absolute;
@@ -176,5 +164,10 @@ export default {
 }
 .sidebar > ul {
   height: 100%;
+}
+.red {
+  position: absolute;
+  top: 50px;
+  left: 270px;
 }
 </style>
