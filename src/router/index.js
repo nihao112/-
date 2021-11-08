@@ -124,7 +124,7 @@ const routes = [
                       title: 'music'
                   },
                   component: () => import ( /* webpackChunkName: "login" */ "../views/Music.vue"),
-                  childred:[
+                  children:[
                           {
                             path: 'tuijian',
                             name: 'tuijian',
