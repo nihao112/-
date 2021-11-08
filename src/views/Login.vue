@@ -1,5 +1,9 @@
 <template>
   <div class="login-wrap">
+    <i @click="dian"
+       :class="loot ? 'yimyue el-icon-lx-notificationfill':'yimyue el-icon-lx-notificationforbidfill'"></i>
+    <audio :src="url"
+           ref="names"></audio>
     <div class="ms-login">
       <div class="ms-title">后台管理系统</div>
       <el-form :model="param"
@@ -37,18 +41,38 @@
 </template>
 
 <script>
-import { ref, reactive } from "vue";
+import { ref, reactive, onMounted } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 import { ElMessage } from "element-plus";
 import { Axiostu } from "../api/index"
+import urls from "../assets/img/yinyue.mp3"
 export default {
   setup () {
+    const url = urls
+    const names = ref(null)
+    const loot = ref(true)
     const router = useRouter();
     const param = reactive({
       username: "倪浩(⊙o⊙)",
       password: "123456",
     });
+    const dian = () => {
+      if (names.value.paused) {
+        names.value.play()
+        loot.value = true
+      } else {
+        names.value.pause()
+        loot.value = false
+
+      }
+    }
+    onMounted(() => {
+      if (names.value.paused == true) {
+        names.value.play()
+        names.value.loop = true
+      }
+    })
     const rules = {
       username: [
         {
@@ -93,12 +117,22 @@ export default {
       rules,
       login,
       submitForm,
+      url,
+      dian,
+      names,
+      loot
     };
   },
 };
 </script>
 
 <style scoped>
+.yimyue {
+  font-size: 30px;
+  color: white;
+  padding: 20px;
+  cursor: pointer;
+}
 .login-wrap {
   position: relative;
   width: 100%;
