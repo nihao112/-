@@ -121,17 +121,17 @@ const routes = [
                   path: "/music",
                   name: "Music",
                   meta: {
-                      title: 'music'
+                      title: 'QQ音乐'
                   },
                   component: () => import ( /* webpackChunkName: "login" */ "../views/Music.vue"),
                   children:[
                           {
-                            path: 'tuijian',
-                            name: 'tuijian',
+                            path: 'qqyinyue',
+                            name: 'QQyinyue',
                             meta: {
                                 title: '推荐'
                             },
-                            component: () => import (/* webpackChunkName: "editor" */ '../views/Music1.vue')
+                            component: () => import (/* webpackChunkName: "editor" */ '../views/QQyinyue.vue')
                         }
                   ]
               }

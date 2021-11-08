@@ -1,5 +1,6 @@
 <template>
   <div class="error-page">
+
     <!-- <div style='display:flex'>
       <div class='pink'>
         <div style='margin-left:40px;margin-top:10px'><img src="6.png" alt="" style='width:100px'></div>
@@ -18,34 +19,37 @@
     <div style='margin-left:40px;margin-top:10px'><img src="6.png" alt="" style='width:100px'></div>
     <el-menu class="sidebar-el-menu" :default-active="onRoutes" :collapse="collapse" background-color="#f6f6f6"
       text-color="#bfcbd9" active-text-color="#20a0ff" unique-opened router>
-      <template v-for="item in items">
-        <template v-if="item.subs">
-          <el-submenu :index="item.index" :key="item.index">
-            <template #title>
-              <i :class="item.icon"></i>
-              <span>{{ item.title }}</span>
-            </template>
-            <template v-for="subItem in item.subs">
-              <el-submenu v-if="subItem.subs" :index="subItem.index" :key="subItem.index">
-                <template #title>{{ subItem.title }}</template>
-                <el-menu-item v-for="(threeItem, i) in subItem.subs" :key="i" :index="threeItem.index">
-                  {{ threeItem.title }}</el-menu-item>
-              </el-submenu>
-              <el-menu-item v-else :index="subItem.index" :key="subItem.index">{{ subItem.title }}
-              </el-menu-item>
-            </template>
-          </el-submenu>
+      <div style='margin-left:40px;margin-top:10px'><img src="6.png" alt="" style='width:100px'></div>
+      <el-menu class="sidebar-el-menu" :default-active="onRoutes" :collapse="collapse" background-color="#f6f6f6"
+        text-color="#bfcbd9" active-text-color="#20a0ff" unique-opened router>
+        <template v-for="item in items">
+          <template v-if="item.subs">
+            <el-submenu :index="item.index" :key="item.index">
+              <template #title>
+                <i :class="item.icon"></i>
+                <span>{{ item.title }}</span>
+              </template>
+              <template v-for="subItem in item.subs">
+                <el-submenu v-if="subItem.subs" :index="subItem.index" :key="subItem.index">
+                  <template #title>{{ subItem.title }}</template>
+                  <el-menu-item v-for="(threeItem, i) in subItem.subs" :key="i" :index="threeItem.index">
+                    {{ threeItem.title }}</el-menu-item>
+                </el-submenu>
+                <el-menu-item v-else :index="subItem.index" :key="subItem.index">{{ subItem.title }}
+                </el-menu-item>
+              </template>
+            </el-submenu>
 
+          </template>
+          <template v-else>
+            <el-menu-item :index="item.index" :key="item.index">
+              <i :class="item.icon"></i>
+              <template #title>{{ item.title }}</template>
+            </el-menu-item>
+          </template>
         </template>
-        <template v-else>
-          <el-menu-item :index="item.index" :key="item.index">
-            <i :class="item.icon"></i>
-            <template #title>{{ item.title }}</template>
-          </el-menu-item>
-        </template>
-      </template>
-    </el-menu>
-    <router-view></router-view>
+      </el-menu>
+      <router-view></router-view>
   </div>
 </template>
 
@@ -56,11 +60,11 @@ import { useRoute } from "vue-router";
 export default {
   name: "Music",
   setup () {
-    let arr = ['1.jpg', '2.jpg', '3.png', '4.png', '5.png',]
+
     const items = [
       {
         icon: "el-icon-lx-favor",
-        index: "/music/tuijian",
+        index: "/music/qqyinyue",
         title: "推荐",
       },
       {
