@@ -13,18 +13,24 @@
              router>
       <template v-for="item in items">
         <template v-if="item.subs">
+
           <el-submenu :index="item.index"
                       :key="item.index">
+
             <template #title>
               <i :class="item.icon"></i>
               <span>{{ item.title }}</span>
+
             </template>
+
             <template v-for="subItem in item.subs">
               <el-submenu v-if="subItem.subs"
                           :index="subItem.index"
                           :key="subItem.index">
+
                 <template #title>{{ subItem.title }}</template>
-                <el-menu-item v-for="(threeItem, i) in subItem.subs"
+                <el-menu-item style="border: 1px solid red"
+                              v-for="(threeItem, i) in subItem.subs"
                               :key="i"
                               :index="threeItem.index">
                   {{ threeItem.title }}</el-menu-item>
@@ -35,7 +41,6 @@
               </el-menu-item>
             </template>
           </el-submenu>
-
         </template>
         <template v-else>
           <el-menu-item :index="item.index"
@@ -46,7 +51,7 @@
         </template>
       </template>
     </el-menu>
-
+    <router-view></router-view>
   </div>
 </template>
 
@@ -57,7 +62,6 @@ import { useRoute } from "vue-router";
 export default {
   name: "Music",
   setup () {
-
     const items = [
       {
         icon: "el-icon-lx-favor",
@@ -127,7 +131,7 @@ export default {
       items,
       onRoutes,
       collapse,
-      arr
+
     }
 
   },
@@ -173,5 +177,8 @@ export default {
 }
 .sidebar > ul {
   height: 100%;
+}
+.error-page {
+  /* border: 1px solid red; */
 }
 </style>
