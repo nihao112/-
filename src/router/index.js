@@ -45,6 +45,14 @@ const routes = [
                     title: 'tab标签'
                 },
                 component: () => import ( /* webpackChunkName: "tabs" */ "../views/Tabs.vue")
+            },
+            {
+                path: "/lunbotu",
+                name: "lunbotu",
+                meta: {
+                    title: '轮播图'
+                },
+                component: () => import ( /* webpackChunkName: "lunbotu" */ "../views/Lunbotu.vue")
             }, {
                 path: "/donate",
                 name: "donate",
