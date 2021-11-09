@@ -137,7 +137,7 @@ export default {
 
       {
         icon: "el-icon-lx-notificationfill",
-        index: "/music",
+        index: "/music/qqyinyue",
         title: "播放音乐",
       }
 

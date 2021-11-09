@@ -1,9 +1,14 @@
 <template>
   <div class='pink'>
     <div style='width:1000px'>
-      <el-carousel :interval="4000" type="card" height="200px">
-        <el-carousel-item v-for="item in arr" :key="item">
-          <img :src="item" alt="" style='width:500px;height:100%' />
+      <el-carousel :interval="4000"
+                   type="card"
+                   height="200px">
+        <el-carousel-item v-for="item in arr"
+                          :key="item">
+          <img :src="item"
+               alt=""
+               style='width:500px;height:100%' />
         </el-carousel-item>
       </el-carousel>
     </div>
@@ -15,8 +20,13 @@
       </div>
     </div>
     <div style='display:flex;flex-wrap:wrap'>
-      <div v-for='item of obj' :key='item.id' style='display:flex;width:500px;margin-top:20px' class='pp'>
-        <div><img :src="item.tu" alt="" style='width:80px;height:70px'></div>
+      <div v-for='item of obj'
+           :key='item.id'
+           style='display:flex;width:500px;margin-top:20px'
+           class='pp'>
+        <div><img :src="item.tu"
+               alt=""
+               style='width:80px;height:70px'></div>
         <div style='font-size:13px;margin-left:30px;margin-top:10px;width:130px'>
           <div>
             <h4>{{item.name}}</h4>
@@ -25,20 +35,42 @@
         </div>
         <div>
           <div class='yinyue'>
-            <img src="yinyue/4.png" alt="" style='width:20px' class='begin' title='播放' @click='fn(item)'
-              v-if='index!=item.id'>
-            <img src="yinyue/2.png" alt="" style='width:20px' class='begin1' title='暂停' v-if='index==item.id'
-              @click='fn1'>
-            <img src="yinyue/6.png" alt="" style='width:20px' class='begin2' title='循环播放' v-if='username!=item.name'
-              @click='fn2(item.name)'>
-            <img src="yinyue/5.png" alt="" style='width:20px' class='begin2' title='停止循环播放' v-if='username==item.name'
-              @click='fn3'>
+            <img src="yinyue/4.png"
+                 alt=""
+                 style='width:20px'
+                 class='begin'
+                 title='播放'
+                 @click='fn(item)'
+                 v-if='index!=item.id'>
+            <img src="yinyue/2.png"
+                 alt=""
+                 style='width:20px'
+                 class='begin1'
+                 title='暂停'
+                 v-if='index==item.id'
+                 @click='fn1'>
+            <img src="yinyue/6.png"
+                 alt=""
+                 style='width:20px'
+                 class='begin2'
+                 title='循环播放'
+                 v-if='username!=item.name'
+                 @click='fn2(item.name)'>
+            <img src="yinyue/5.png"
+                 alt=""
+                 style='width:20px'
+                 class='begin2'
+                 title='停止循环播放'
+                 v-if='username==item.name'
+                 @click='fn3'>
           </div>
         </div>
       </div>
       <div>
-        <audio controls style='width:950px' ref='qq' :src="playmusic">
-
+        <audio controls
+               style='width:950px'
+               ref='qq'
+               :src="playmusic">
         </audio>
       </div>
     </div>

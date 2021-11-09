@@ -39,7 +39,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import { ref, reactive, onMounted } from "vue";
 import { useStore } from "vuex";
