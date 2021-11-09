@@ -33,6 +33,9 @@
               @click='fn2(item.name)'>
             <img src="yinyue/5.png" alt="" style='width:20px' class='begin2' title='停止循环播放' v-if='username==item.name'
               @click='fn3'>
+            <img src="yinyue/8.png" alt="" style='width:20px' title='加入我喜欢'
+              v-if='item.userwriter || obj1.includes(item)' @click='fn4(item)'>
+            <img src="yinyue/7.png" alt="" style='width:20px' title='移除我喜欢' v-if='!item.userwriter' @click='fn5(item)'>
           </div>
         </div>
       </div>
@@ -45,7 +48,8 @@
   </div>
 </template>
 <script>
-import { nextTick, ref } from 'vue'
+import { nextTick, ref, reactive } from 'vue'
+import { useStore } from 'vuex'
 export default {
 
   setup () {
@@ -54,50 +58,10 @@ export default {
     let playmusic = ref('')
     let index = ref('')
     let username = ref('')
-    let obj = [
-      {
-        name: '带泪的鱼',
-        writer: '带泪的鱼(戴丽丽)',
-        id: 1,
-        tu: '1.jpg',
-        music: 'QQyinyue/nizou.mp3'
-      },
-      {
-        name: 'Lifestyle(抖音热曲)',
-        writer: '国民好洲道',
-        id: 2,
-        tu: '2.jpg',
-        music: 'QQyinyue/1.mp3'
-      },
-      {
-        name: '美丽的神话',
-        writer: '男辰',
-        id: 3,
-        tu: '3.png',
-        music: 'QQyinyue/2.mp3'
-      },
-      {
-        name: '别错过',
-        writer: '程jiajia',
-        id: 4,
-        tu: '4.png',
-        music: 'QQyinyue/3.mp3'
-      },
-      {
-        name: '坏女孩',
-        writer: '徐良/小凌',
-        id: 5,
-        tu: '5.png',
-        music: 'QQyinyue/4.mp3'
-      },
-      {
-        name: 'Nemesis',
-        writer: 'Ryllz',
-        id: 6,
-        tu: '3.png',
-        music: 'QQyinyue/5.mp3'
-      }
-    ]
+    const store = useStore()
+    let obj = reactive(store.state.obj)
+    let obj1 = []
+    let obj2 = []
     function fn (item) {
       playmusic.value = item.music
       nextTick(() => {
@@ -118,6 +82,25 @@ export default {
       qq.value.loop = false;
       username.value = ''
     }
+    function fn4 (item) {
+      item.userwriter = !item.userwriter;
+      obj1 = {
+        id: item.id,
+        music: item.music,
+        name: item.name,
+        tu: item.tu,
+        writer: item.writer,
+        standof: item.standof,
+        userwriter: true,
+      }
+
+      store.commit('sendobj', obj1)
+    }
+    function fn5 (arr) {
+      arr.userwriter = !arr.userwriter;
+      obj2 = arr
+      store.commit('sendobjj', obj2)
+    }
     return {
       arr,
       obj,
@@ -128,7 +111,12 @@ export default {
       username,
       fn2,
       fn3,
-      playmusic
+      playmusic,
+      obj1,
+      fn4,
+      fn5,
+      store,
+      obj2
     }
   },
 }

@@ -1,6 +1,6 @@
 import {createRouter, createWebHashHistory} from "vue-router";
 import Home from "../views/Home.vue";
-
+import Qyinyue from '../views/QQyinyue.vue'
 const routes = [
     {
         path: '/',
@@ -131,8 +131,16 @@ const routes = [
                             meta: {
                                 title: '推荐'
                             },
-                            component: () => import (/* webpackChunkName: "editor" */ '../views/QQyinyue.vue')
-                        }
+                            component:Qyinyue
+                        },
+                        {
+                          path: 'like',
+                          name: 'like',
+                          meta: {
+                              title: '我喜欢'
+                          },
+                          component: () => import (/* webpackChunkName: "editor" */ '../views/Like.vue')
+                      }
                   ]
               }
         ]
