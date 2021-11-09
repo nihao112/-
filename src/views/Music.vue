@@ -93,7 +93,7 @@ export default {
       },
       {
         icon: "el-icon-lx-likefill",
-        index: "/icon",
+        index: "/music/like",
         title: "我喜欢",
       },
       {
