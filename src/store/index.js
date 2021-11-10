@@ -60,18 +60,14 @@ export default createStore({
             standof: '如果你也听说'
           }
         ],
-        obj1:[]
+        obj1:[],
     },
     mutations: {
         delTagsItem(state, data) {
-            state
-                .tagsList
-                .splice(data.index, 1);
+            state.tagsList.splice(data.index, 1);
         },
         setTagsItem(state, data) {
-            state
-                .tagsList
-                .push(data)
+            state.tagsList.push(data)
         },
         clearTags(state) {
             state.tagsList = []
@@ -84,21 +80,13 @@ export default createStore({
                 const item = state.tagsList[i];
                 if (item.path === data.$route.fullPath) {
                     if (i < len - 1) {
-                        data
-                            .$router
-                            .push(state.tagsList[i + 1].path);
+                        data.$router .push(state.tagsList[i + 1].path);
                     } else if (i > 0) {
-                        data
-                            .$router
-                            .push(state.tagsList[i - 1].path);
+                        data .$router.push(state.tagsList[i - 1].path);
                     } else {
-                        data
-                            .$router
-                            .push("/");
+                        data.$router.push("/");
                     }
-                    state
-                        .tagsList
-                        .splice(i, 1);
+                        state.tagsList.splice(i, 1);
                     break;
                 }
             }
@@ -117,7 +105,15 @@ export default createStore({
           state.obj1=state.obj1.filter(item=>
              item.id!=obj2.id
           )
-          console.log(state.obj1,333)
+          console.log(state.obj1,324333)
+        },
+        dele(state,items){
+          state.obj.forEach(item=>{
+           if(item.id==items.id){
+             item.userwriter=true
+           }
+         })
+
         }
     },
     actions: {},

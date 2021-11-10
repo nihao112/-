@@ -35,27 +35,7 @@
         </div>
         <div>
           <div class='yinyue'>
-            <img src="yinyue/4.png"
-                 alt=""
-                 style='width:20px'
-                 class='begin'
-                 title='播放'
-                 @click='fn(item)'
-                 v-if='index!=item.id'>
-            <img src="yinyue/2.png"
-                 alt=""
-                 style='width:20px'
-                 class='begin1'
-                 title='暂停'
-                 v-if='index==item.id'
-                 @click='fn1'>
-            <img src="yinyue/6.png"
-                 alt=""
-                 style='width:20px'
-                 class='begin2'
-                 title='循环播放'
-                 v-if='username!=item.name'
-                 @click='fn2(item.name)'>
+
             <img src="yinyue/5.png"
                  alt=""
                  style='width:20px'
